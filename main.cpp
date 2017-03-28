@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	fichero >> num_casos;
 	for (int i = 0; i < num_casos; ++i) {		
 		fichero >> m; fichero >> a; fichero >> b;
-		solucion final = divideVenceras(0,a.length());
+		solucion final = divideVenceras(0,a.length()-1);
 		cout << final.pos << " " << final.valor << endl;
 	}
 }

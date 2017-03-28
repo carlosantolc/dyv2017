@@ -7,6 +7,9 @@
 
 using namespace std;
 
+extern string a,b;
+extern int m;
+
 typedef struct{
 	int pos;
 	int valor;

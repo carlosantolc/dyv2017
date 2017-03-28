@@ -27,18 +27,17 @@ solucion solucionDirecta(int i) {
 	s1.pos = i;
 	s1.valor = -1;
 	s1.diferencias.insert(s1.diferencias.begin(),abs(int(a[i]) - int(b[i])));
-	cout << i << endl;
 
 	return s1;
 }
 
 int dividir(int i, int j) {
-	int aux = j - i;
-	int p = ((i + (aux/2)) + (aux%2));
+	int aux = j - i + 1;
+	int p = ((i + (aux/2)) + (aux%2) - 1);
 	return p;
 }
 
-solucion combinar(solucion s1, solucion s2) {	
+solucion combinar(solucion s1, solucion s2) {
 
 	solucion s3;
 	vector<int> diferenciasCombinado;
@@ -88,15 +87,13 @@ solucion combinar(solucion s1, solucion s2) {
 		if (s3.valor == s1.valor) {
 			s3.pos = s1.pos;
 			s3.valor = s1.valor;
-			return s3;
 		} else if (s3.valor == s2.valor) {
 			s3.pos = s2.pos;
 			s3.valor = s2.valor;
-			return s3;
 		} else {
 			s3.pos = posCompr;
 			s3.valor = valorCompr;
-			return s3;
 		}
+		return s3;
 	}
 }

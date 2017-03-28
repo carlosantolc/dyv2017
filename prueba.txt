@@ -1,7 +1,4 @@
-2
+1
 5
 cddabcdacc
 cacddbcadc
-6
-cddabcdacca
-cacddbcadca
