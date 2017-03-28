@@ -10,7 +10,6 @@ solucion divideVenceras(int i, int j) {
 		return solucionDirecta(i);
 	} else {
 		p = dividir(i,j);
-		cout << "dyv " << i << " " << p << " " << j << endl;
 		return combinar(divideVenceras(i,p),divideVenceras(p+1,j));
 	}
 }
@@ -44,12 +43,12 @@ solucion combinar(solucion s1, solucion s2) {
 
 	for (int i = 0; i < s1.diferencias.size(); ++i)
 	{
-		diferenciasCombinado.push_back(s1.diferencias.size());
+		diferenciasCombinado.push_back(s1.diferencias.at(i));
 	}
 
 	for (int i = 0; i < s2.diferencias.size(); ++i)
 	{
-		diferenciasCombinado.push_back(s2.diferencias.size());
+		diferenciasCombinado.push_back(s2.diferencias.at(i));
 	}
 
 	s3.diferencias = diferenciasCombinado;
@@ -63,7 +62,7 @@ solucion combinar(solucion s1, solucion s2) {
 		int sumaTotal=0;
 		for (int x = 0; x < m; ++x)
 		{
-			sumaTotal = sumaTotal + diferenciasCombinado.at(x);
+			sumaTotal += diferenciasCombinado.at(x);
 		}
 		s3.pos = s1.pos;
 		s3.valor = sumaTotal;
@@ -82,6 +81,8 @@ solucion combinar(solucion s1, solucion s2) {
 				posCompr = indCompr;
 				valorCompr = sumaTotal;
 			}
+			sumaTotal=0;
+			indCompr++;
 		}
 		s3.valor = max(s1.valor,max(s2.valor,valorCompr));
 		if (s3.valor == s1.valor) {

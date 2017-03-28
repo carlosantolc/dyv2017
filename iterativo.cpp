@@ -33,6 +33,6 @@ int main(int argc, char *argv[]) {
 			}
 			inicial++;
 		}
-		cout << posMax+1 << " " << valorMax << endl;
+		cout << posMax << " " << valorMax << endl;
 	}
 }
