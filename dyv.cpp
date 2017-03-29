@@ -52,13 +52,13 @@ solucion combinar(solucion s1, solucion s2) {
 	}
 
 	s3.diferencias = diferenciasCombinado;
-	int limite = (s2.pos + (s2.diferencias.size()));
+	int limite = s3.diferencias.size();
 
-	if ((limite-s1.pos) < m) {
+	if (limite < m) {
 		s3.pos = s1.pos;
 		s3.valor = -1;
 		return s3;
-	} else if ((limite-s1.pos) == m){
+	} else if (limite == m){
 		int sumaTotal=0;
 		for (int x = 0; x < m; ++x)
 		{
@@ -68,14 +68,19 @@ solucion combinar(solucion s1, solucion s2) {
 		s3.valor = sumaTotal;
 		return s3;
 	} else {
-		int indCompr = s2.pos -m + 1;
+		int indCompr = s1.diferencias.size() - m + 1;
 		int cont = 1;
 		int valorCompr,sumaTotal = 0;
 		int posCompr = -1;
 		while ((indCompr + m) <= limite && cont < m) {
 			for (int x = 0; x < m; ++x)
 			{
-				sumaTotal = sumaTotal + diferenciasCombinado.at(x+indCompr);
+				int aux = x+indCompr;
+				//cout << "s1.dif " << s1.diferencias.size() << " s2.dif " << s2.diferencias.size() << endl;
+				//cout << "x " << x << " indCompr " << indCompr << " aux " << aux << endl;
+				if (aux > -1) {
+					sumaTotal = sumaTotal + diferenciasCombinado.at(x+indCompr);
+				}
 			}
 			if (sumaTotal > valorCompr) {
 				posCompr = indCompr;
@@ -83,6 +88,7 @@ solucion combinar(solucion s1, solucion s2) {
 			}
 			sumaTotal=0;
 			indCompr++;
+			cont++;
 		}
 		s3.valor = max(s1.valor,max(s2.valor,valorCompr));
 		if (s3.valor == s1.valor) {
