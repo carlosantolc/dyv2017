@@ -55,7 +55,7 @@ solucion combinar(solucion s1, solucion s2) {
 	int limite = s3.diferencias.size();
 
 	if (limite < m) {
-		s3.pos = s1.pos;
+		s3.pos = -1;
 		s3.valor = -1;
 		return s3;
 	} else if (limite == m){
@@ -64,7 +64,7 @@ solucion combinar(solucion s1, solucion s2) {
 		{
 			sumaTotal += diferenciasCombinado.at(x);
 		}
-		s3.pos = s1.pos;
+		s3.pos = 0;
 		s3.valor = sumaTotal;
 		return s3;
 	} else {
@@ -93,13 +93,10 @@ solucion combinar(solucion s1, solucion s2) {
 		s3.valor = max(s1.valor,max(s2.valor,valorCompr));
 		if (s3.valor == s1.valor) {
 			s3.pos = s1.pos;
-			s3.valor = s1.valor;
 		} else if (s3.valor == s2.valor) {
-			s3.pos = s2.pos;
-			s3.valor = s2.valor;
+			s3.pos = s2.pos+s1.diferencias.size();
 		} else {
 			s3.pos = posCompr;
-			s3.valor = valorCompr;
 		}
 		return s3;
 	}
