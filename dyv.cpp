@@ -92,9 +92,17 @@ solucion combinar(solucion s1, solucion s2) {
 		}
 		s3.valor = max(s1.valor,max(s2.valor,valorCompr));
 		if (s3.valor == s1.valor) {
-			s3.pos = s1.pos;
+			if (s1.pos == -1) {
+				s3.pos = posCompr;
+			} else {				
+				s3.pos = s1.pos;
+			}
 		} else if (s3.valor == s2.valor) {
-			s3.pos = s2.pos+s1.diferencias.size();
+			if (s2.pos == -1) {
+				s3.pos = posCompr;
+			} else {
+				s3.pos = s2.pos+s1.diferencias.size();
+			}
 		} else {
 			s3.pos = posCompr;
 		}
