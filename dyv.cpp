@@ -40,6 +40,7 @@ solucion combinar(solucion s1, solucion s2) {
 
 	solucion s3;
 	vector<int> diferenciasCombinado;
+	diferenciasCombinado.clear();
 
 	for (int i = 0; i < s1.diferencias.size(); ++i)
 	{

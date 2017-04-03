@@ -15,5 +15,11 @@ diff : prueba.txt dyv iterativo
 	./iterativo prueba.txt > salidaIterativo
 	diff salidaDyv salidaIterativo
 
+diff2 :prueba2.txt dyv iterativo
+	./dyv prueba2.txt > salidaDyv2
+	./iterativo prueba2.txt > salidaIterativo2
+	diff salidaDyv2 salidaIterativo2
+
+
 clean :
 	rm -f dyv iterativo salidaIterativo salidaDyv
