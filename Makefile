@@ -4,22 +4,22 @@ dyv : main.cpp dyv.cpp dyv.h
 iterativo : iterativo.cpp
 	g++ iterativo.cpp -o iterativo
 
+generador : generador_casos.cpp
+	g++ generador_casos.cpp -o generador_casos
+
 run : prueba.txt dyv
 	./dyv prueba.txt
 
 run2 : prueba.txt iterativo
 	./iterativo prueba.txt
 
+prueba.txt : generador_casos
+	./generador_casos > prueba.txt
+
 diff : prueba.txt dyv iterativo
 	./dyv prueba.txt > salidaDyv
 	./iterativo prueba.txt > salidaIterativo
 	diff salidaDyv salidaIterativo
 
-diff2 :prueba2.txt dyv iterativo
-	./dyv prueba2.txt > salidaDyv2
-	./iterativo prueba2.txt > salidaIterativo2
-	diff salidaDyv2 salidaIterativo2
-
-
 clean :
-	rm -f dyv iterativo salidaIterativo salidaDyv
+	rm -f dyv iterativo generador_casos salidaIterativo salidaDyv prueba.txt

@@ -39,20 +39,17 @@ int dividir(int i, int j) {
 solucion combinar(solucion s1, solucion s2) {
 
 	solucion s3;
-	vector<int> diferenciasCombinado;
-	diferenciasCombinado.clear();
+	s3.diferencias.clear();
 
 	for (int i = 0; i < s1.diferencias.size(); ++i)
 	{
-		diferenciasCombinado.push_back(s1.diferencias.at(i));
+		s3.diferencias.push_back(s1.diferencias.at(i));
 	}
 
 	for (int i = 0; i < s2.diferencias.size(); ++i)
 	{
-		diferenciasCombinado.push_back(s2.diferencias.at(i));
+		s3.diferencias.push_back(s2.diferencias.at(i));
 	}
-
-	s3.diferencias = diferenciasCombinado;
 	int limite = s3.diferencias.size();
 
 	if (limite < m) {
@@ -63,7 +60,7 @@ solucion combinar(solucion s1, solucion s2) {
 		int sumaTotal=0;
 		for (int x = 0; x < m; ++x)
 		{
-			sumaTotal += diferenciasCombinado.at(x);
+			sumaTotal += s3.diferencias.at(x);
 		}
 		s3.pos = 0;
 		s3.valor = sumaTotal;
@@ -71,7 +68,8 @@ solucion combinar(solucion s1, solucion s2) {
 	} else {
 		int indCompr = s1.diferencias.size() - m + 1;
 		int cont = 1;
-		int valorCompr,sumaTotal = 0;
+		int valorCompr = 0;
+		int sumaTotal = 0;
 		int posCompr = -1;
 		while ((indCompr + m) <= limite && cont < m) {
 			for (int x = 0; x < m; ++x)
@@ -80,7 +78,7 @@ solucion combinar(solucion s1, solucion s2) {
 				//cout << "s1.dif " << s1.diferencias.size() << " s2.dif " << s2.diferencias.size() << endl;
 				//cout << "x " << x << " indCompr " << indCompr << " aux " << aux << endl;
 				if (aux > -1) {
-					sumaTotal = sumaTotal + diferenciasCombinado.at(x+indCompr);
+					sumaTotal = sumaTotal + s3.diferencias.at(x+indCompr);
 				}
 			}
 			if (sumaTotal > valorCompr) {
