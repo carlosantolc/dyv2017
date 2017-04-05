@@ -25,9 +25,9 @@ int main(int argc, char const *argv[])
 
 	cout << "9000" << endl;
 
-	for (int i = 0; i < 6; ++i)
+	for (int i = 0; i < 9; ++i)
 	{
-		for (int j = 10; j <= 10000; j+=10)
+		for (int j = 100; j <= 100000; j+=100)
 		{
 			cout << m[i] << endl;
 			for (int k = 0; k < 2; ++k)
