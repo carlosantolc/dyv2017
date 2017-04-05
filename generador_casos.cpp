@@ -21,13 +21,13 @@ char genRandom()
 int main(int argc, char const *argv[])
 {
 	srand(time(NULL));
-	int m[6] = {2,5,10,20,50,100};
+	int m[9] = {2,5,10,20,50,100,200,500,1000};
 
-	cout << "60" << endl;
+	cout << "9000" << endl;
 
 	for (int i = 0; i < 6; ++i)
 	{
-		for (int j = 10; j <= 100; j+=10)
+		for (int j = 10; j <= 10000; j+=10)
 		{
 			cout << m[i] << endl;
 			for (int k = 0; k < 2; ++k)

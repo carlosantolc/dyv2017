@@ -72,16 +72,18 @@ solucion combinar(solucion s1, solucion s2) {
 		int sumaTotal = 0;
 		int posCompr = -1;
 		while ((indCompr + m) <= limite && cont < m) {
+			//cout << "while" << endl;
 			for (int x = 0; x < m; ++x)
 			{
 				int aux = x+indCompr;
 				//cout << "s1.dif " << s1.diferencias.size() << " s2.dif " << s2.diferencias.size() << endl;
 				//cout << "x " << x << " indCompr " << indCompr << " aux " << aux << endl;
-				if (aux > -1) {
+				if (indCompr > -1) {
 					sumaTotal = sumaTotal + s3.diferencias.at(x+indCompr);
 				}
 			}
 			if (sumaTotal > valorCompr) {
+				//cout << "actualiza " << indCompr << " " << sumaTotal << endl;
 				posCompr = indCompr;
 				valorCompr = sumaTotal;
 			}
@@ -89,21 +91,35 @@ solucion combinar(solucion s1, solucion s2) {
 			indCompr++;
 			cont++;
 		}
-		s3.valor = max(s1.valor,max(s2.valor,valorCompr));
-		if (s3.valor == s1.valor) {
+		int maximo = max(s1.valor,max(s2.valor,valorCompr));
+		//s3.valor = max(s1.valor,max(s2.valor,valorCompr));
+
+			//cout << "AQUI 0" << endl;
+		if (maximo == s1.valor) {
+			//cout << "AQUI 1" << endl;
+			s3.valor = maximo;
 			if (s1.pos == -1) {
 				s3.pos = posCompr;
+
+			//cout << "AQUI 2" << endl;
 			} else {				
 				s3.pos = s1.pos;
+
+			//cout << "AQUI 3" << endl;
 			}
-		} else if (s3.valor == s2.valor) {
+		} else if (maximo == valorCompr) {
+			//cout << "AQUI 4 " << posCompr << " " << maximo << endl;
+			s3.pos = posCompr;
+			s3.valor = maximo;
+		} else {
+
+			//cout << "AQUI 5" << endl;
+			s3.valor = maximo;			
 			if (s2.pos == -1) {
 				s3.pos = posCompr;
 			} else {
 				s3.pos = s2.pos+s1.diferencias.size();
 			}
-		} else {
-			s3.pos = posCompr;
 		}
 		return s3;
 	}
